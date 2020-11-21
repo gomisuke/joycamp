@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   devise_for :admins, controllers: {
   	sessions: 'admins/sessions',
   	passwords: 'admins/password',
@@ -14,7 +15,14 @@ Rails.application.routes.draw do
   root "homes#top"
   get 'homes/about' => "homes#about"
 
+  namespace :admin do
+    get 'homes/top'
+    get 'campsites/new'
+    get 'campsites/index'
+  end
+
   namespace :public do
+    get 'homes/top'
     resources :campsite
   end
 end
