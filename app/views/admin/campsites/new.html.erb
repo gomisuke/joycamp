@@ -1,2 +1,10 @@
-<h1>Admin::Campsites#new</h1>
-<p>Find me in app/views/admin/campsites/new.html.erb</p>
+<div>
+	<h1>キャンプサイトを登録する</h1>
+	<%= form_with model: [:admin, @campsite] do |f| %>
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+	<%= f.label :explanation %>
+	<%= f.text_field :explanation %>
+	<%= f.submit "登録する", class:"btn btn-success" %>
+	<% end %>
+</div>
