@@ -20,15 +20,33 @@ class Admin::CampsitesController < ApplicationController
   end
 
   def show
+  	@campsite = Campsite.find(params[:id])
   end
 
   def edit
+  	@campsite = Campsite.find(params[:id])
   end
 
   def update
+  	@campsite = Campsite.find(params[:id])
+  	if @campsite.update(campsite_params)
+  		flash[:notice] = "更新しました"
+  		redirect_to admin_campsite_path(@campsite)
+  	else
+  		render 'edit'
+  	end
   end
 
   def destroy
+  	@campsite = Campsite.find(params[:id])
+  	@campsite.destroy
+  	redirect_to admin_campsites_path
   end
+
+  private
+
+  	def campsite_params
+  		params.require(:campsite).permit(:name, :explanation)
+  	end
 
 end

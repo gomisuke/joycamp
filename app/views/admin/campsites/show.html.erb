@@ -1,0 +1,9 @@
+<div>
+	<h1>キャンプサイト詳細画面</h1>
+	<div>
+		<%= @campsite.name %>
+		<%= @campsite.explanation %>
+		<%= link_to "編集", edit_admin_campsite_path(@campsite), class:"btn btn-success" %>
+		<%= link_to "削除", admin_campsite_path(@campsite), method: :delete, class:"btn btn-danger" %>
+	</div>
+</div>
