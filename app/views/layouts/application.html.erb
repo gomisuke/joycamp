@@ -10,6 +10,26 @@
   </head>
 
   <body>
+    <header class="sticky-top">
+      <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navmenu" aria-controls="navmenu" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navmenu">
+          <ul class="navbar-nav ml-auto">
+            <% if user_signed_in? %>
+              <li><%= link_to "ホーム", "", class:"nav-item nav-link", 'data-turbolinks':false %></li>
+              <li><%= link_to "マイページ", "", class:"nav-item nav-link", 'data-turbolinks':false %></li>
+              <li><%= link_to "ログアウト", "", method: :delete, class:"nav-item nav-link" %></li>
+            <% else %>
+              <li><%= link_to "新規登録", new_user_registration_path, class:"nav-item nav-link", 'data-turbolinks':false %></li>
+              <li><%= link_to "ログイン", user_session_path, class:"nav-item nav-link" %></li>
+              <li><%= link_to "about", "", class:"nav-item nav-link" %></li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>
