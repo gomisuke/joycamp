@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'campsites/index'
+  end
   #devise_routing
   devise_for :admins, controllers: {
   	sessions: 'admins/sessions',

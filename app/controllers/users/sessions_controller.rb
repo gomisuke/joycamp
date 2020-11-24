@@ -18,13 +18,14 @@ class Users::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  # def after_sign_in_path_for(resource)
-    
-  # end
-  # #ログアウト後のパス
-  # def after_sign_out_path_for(resource)
-    
-  # end
+  #ログイン後のパス
+  def after_sign_in_path_for(resource)
+    public_campsites_path
+  end
+  #ログアウト後のパス
+  def after_sign_out_path_for(resource)
+    root_path
+  end
 
   # protected
 

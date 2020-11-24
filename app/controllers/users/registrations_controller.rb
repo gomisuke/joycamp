@@ -39,9 +39,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   #新規登録後のパス
-  #def after_sign_up_path_for(resource)
-
-  #end
+  def after_sign_up_path_for(resource)
+    public_campsites_path
+  end
 
   #登録情報編集後のパス
   #def after_update_path_for(resource)
