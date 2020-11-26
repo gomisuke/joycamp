@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   end
 
   namespace :public do
+    get 'homes/about'
     resources :campsites
   end
 end
