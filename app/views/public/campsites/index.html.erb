@@ -1,7 +1,16 @@
 <div class="cantainer">
 	<div class="row">
 		<div class="col-12">
-			<h1>ホーム画面（）</h1>
+			<h3>ホーム画面（）</h3>
+			<h3>キャンプ場一覧</h3>
+			<%= @campsites.each do |campsite| %>
+			<%= campsite.name %>
+			<%= campsite.explanation %>
+			<%= campsite.postcode %>
+			<%= campsite.prefecture_code %>
+			<%= campsite.address_city %>
+			<%= campsite.address_street %>
+			<% end %>
 		</div>
 	</div>
 </div>

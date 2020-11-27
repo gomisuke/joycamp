@@ -46,7 +46,7 @@ class Admin::CampsitesController < ApplicationController
   private
 
   	def campsite_params
-  		params.require(:campsite).permit(:name, :explanation)
+  		params.require(:campsite).permit(:name, :explanation, :postcode, :prefecture_code, :address_city, :address_street)
   	end
 
 end

@@ -7,7 +7,6 @@ class CreateCampsites < ActiveRecord::Migration[5.2]
     	t.integer :prefecture_code, null: false
     	t.string :address_city, null: false
     	t.string :address_street, null: false
-    	t.string :address_building, null: false
       t.integer :approval_status, null: false, default: 0
 
 

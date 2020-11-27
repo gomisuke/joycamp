@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_20_155034) do
+ActiveRecord::Schema.define(version: 2020_11_27_174117) do
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -32,10 +32,32 @@ ActiveRecord::Schema.define(version: 2020_11_20_155034) do
     t.integer "prefecture_code", null: false
     t.string "address_city", null: false
     t.string "address_street", null: false
-    t.string "address_building", null: false
     t.integer "approval_status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "admin_id"
+    t.bigint "genre_id"
+    t.index ["admin_id"], name: "index_campsites_on_admin_id"
+    t.index ["genre_id"], name: "index_campsites_on_genre_id"
+  end
+
+  create_table "genres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.boolean "is_active", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "publishers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_publishers_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_publishers_on_reset_password_token", unique: true
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -51,4 +73,5 @@ ActiveRecord::Schema.define(version: 2020_11_20_155034) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "campsites", "admins"
 end

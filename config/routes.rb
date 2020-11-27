@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'campsites/index'
-  end
+
+  devise_for :publishers
+
   #devise_routing
   devise_for :admins, controllers: {
   	sessions: 'admins/sessions',
@@ -27,4 +27,6 @@ Rails.application.routes.draw do
     get 'homes/about'
     resources :campsites
   end
+
+  resources :genres
 end

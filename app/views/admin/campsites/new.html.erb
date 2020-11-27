@@ -3,6 +3,7 @@
 		<div class="col-8">
 			<h1>キャンプサイトを登録する</h1>
 			<%= form_with model: [:admin, @campsite] do |f| %>
+
 			<div class="form-group">
 				<%= f.label :name %>
 				<%= f.text_field :name, class:"form-control" %>
@@ -12,26 +13,26 @@
 				<%= f.text_field :explanation, class:"form-control" %>
 			</div>
 			<div class="form-group">
+				<%= f.label :genre_id %>
+				<%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %>
+			</div>
+			<div class="form-group">
 				<%= f.label :postcode %>
-				<%= f.text_field :postcode, class:"form-control" %>
+				<%= f.text_field :postcode, autofocus: true, class:"form-control", id:"campsite_postal_code" %>
 			</div>
 			<div class="form-group">
 			  <%= f.label :prefecture_code %>
-			  <%= f.text_field :prefecture_code, class:"form-control" %>
+			  <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :name, :name , autofocus: true, class:"form-control", id:"campsite_prefecture_code" %>
 			</div>
 
 			<div class="form-group">
 			  <%= f.label :address_city %>
-			  <%= f.text_field :address_city, class:"form-control" %>
+			  <%= f.text_field :address_city, autofocus: true, class:"form-control", id:"campsite_address_city" %>
 			</div>
 
 			<div class="form-group">
 			  <%= f.label :address_street %>
-			  <%= f.text_field :address_street, class:"form-control" %>
-			</div>
-			<div class="form-group">
-			  <%= f.label :address_building %>
-			  <%= f.text_field :address_building, class:"form-control" %>
+			  <%= f.text_field :address_street, autofocus: true, class:"form-control", id:"campsite_address_street" %>
 			</div>
 			<%= f.submit "登録する", class:"btn btn-success" %>
 			<% end %>

@@ -71,3 +71,5 @@ gem 'devise'
 #レイアウト
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
+#住所自動入力
+gem 'jp_prefecture'
