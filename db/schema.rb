@@ -26,13 +26,14 @@ ActiveRecord::Schema.define(version: 2020_11_20_155034) do
   end
 
   create_table "campsites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.text "explanation"
-    t.integer "postcode"
-    t.string "prefecture_code"
-    t.string "address_city"
-    t.string "address_street"
-    t.string "address_building"
+    t.string "name", null: false
+    t.text "explanation", null: false
+    t.integer "postcode", null: false
+    t.integer "prefecture_code", null: false
+    t.string "address_city", null: false
+    t.string "address_street", null: false
+    t.string "address_building", null: false
+    t.integer "approval_status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

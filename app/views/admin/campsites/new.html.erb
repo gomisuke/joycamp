@@ -16,18 +16,22 @@
 				<%= f.text_field :postcode, class:"form-control" %>
 			</div>
 			<div class="form-group">
-			  <%= f.label :prefecture_code %><br />
+			  <%= f.label :prefecture_code %>
 			  <%= f.text_field :prefecture_code, class:"form-control" %>
 			</div>
 
 			<div class="form-group">
-			  <%= f.label :address_city %><br />
+			  <%= f.label :address_city %>
 			  <%= f.text_field :address_city, class:"form-control" %>
 			</div>
 
 			<div class="form-group">
-			  <%= f.label :address_street %><br />
+			  <%= f.label :address_street %>
 			  <%= f.text_field :address_street, class:"form-control" %>
+			</div>
+			<div class="form-group">
+			  <%= f.label :address_building %>
+			  <%= f.text_field :address_building, class:"form-control" %>
 			</div>
 			<%= f.submit "登録する", class:"btn btn-success" %>
 			<% end %>
