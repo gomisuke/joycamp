@@ -28,7 +28,9 @@ Rails.application.routes.draw do
 
   namespace :public do
     get 'homes/about'
-    resources :campsites
+    resources :campsites do
+      resources :favorites, only: [:create, :destroy]
+    end
   end
 
 

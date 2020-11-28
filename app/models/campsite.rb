@@ -1,7 +1,11 @@
 class Campsite < ApplicationRecord
 
+	has_many :favorites, dependent: :destroy
 
 
+	def favorited_by?(user)
+  		favorites.where(user_id: user.id).exists?
+	end
 
 
 	include JpPrefecture
@@ -14,4 +18,6 @@ class Campsite < ApplicationRecord
 	def prefecture_name=(prefecture_name)
 	  self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
 	end
+
+
 end

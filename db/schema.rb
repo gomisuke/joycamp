@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_28_072819) do
+ActiveRecord::Schema.define(version: 2020_11_28_082006) do
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -48,6 +48,15 @@ ActiveRecord::Schema.define(version: 2020_11_28_072819) do
     t.index ["admin_id"], name: "index_campsites_on_admin_id"
   end
 
+  create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "campsite_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["campsite_id"], name: "index_favorites_on_campsite_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
   create_table "genres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.boolean "is_active", default: true
@@ -83,4 +92,6 @@ ActiveRecord::Schema.define(version: 2020_11_28_072819) do
   add_foreign_key "campsite_genres", "campsites"
   add_foreign_key "campsite_genres", "genres"
   add_foreign_key "campsites", "admins"
+  add_foreign_key "favorites", "campsites"
+  add_foreign_key "favorites", "users"
 end
