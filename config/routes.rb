@@ -16,7 +16,10 @@ Rails.application.routes.draw do
   }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  root 'public/homes#top'
+  root 'homes#top'
+  get 'homes/top'
+  get 'homes/about'
+  resources :genres
 
   namespace :admin do
     get 'homes/top'
@@ -28,5 +31,5 @@ Rails.application.routes.draw do
     resources :campsites
   end
 
-  resources :genres
+
 end

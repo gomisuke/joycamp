@@ -4,5 +4,9 @@ class Public::CampsitesController < ApplicationController
   	@campsites = Campsite.all
   end
 
+  def show
+  	@campsite = Campsite.find(params[:id])
+  end
+
   
 end

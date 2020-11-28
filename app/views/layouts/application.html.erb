@@ -18,6 +18,17 @@
         <div class="collapse navbar-collapse" id="navmenu">
           <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
+              <li class="nav-item nav-link">会員</li>
+              <li><%= link_to "キャンプ一覧", public_campsites_path, class:"nav-item nav-link", 'data-turbolinks':false %></li>
+              <li><%= link_to "マイページ", "", class:"nav-item nav-link", 'data-turbolinks':false %></li>
+              <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"nav-item nav-link" %></li>
+            <% elsif admin_signed_in? %>
+              <li class="nav-item nav-link">管理者</li>
+              <li><%= link_to "キャンプ一覧", admin_campsites_path, class:"nav-item nav-link", 'data-turbolinks':false %></li>
+              <li><%= link_to "マイページ", "", class:"nav-item nav-link", 'data-turbolinks':false %></li>
+              <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"nav-item nav-link" %></li>
+            <% elsif publisher_signed_in? %>
+              <li class="nav-item nav-link">運営</li>
               <li><%= link_to "ホーム", "", class:"nav-item nav-link", 'data-turbolinks':false %></li>
               <li><%= link_to "マイページ", "", class:"nav-item nav-link", 'data-turbolinks':false %></li>
               <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"nav-item nav-link" %></li>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_27_174117) do
+ActiveRecord::Schema.define(version: 2020_11_28_072819) do
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -25,6 +25,15 @@ ActiveRecord::Schema.define(version: 2020_11_27_174117) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "campsite_genres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "campsite_id"
+    t.bigint "genre_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["campsite_id"], name: "index_campsite_genres_on_campsite_id"
+    t.index ["genre_id"], name: "index_campsite_genres_on_genre_id"
+  end
+
   create_table "campsites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "explanation", null: false
@@ -36,9 +45,7 @@ ActiveRecord::Schema.define(version: 2020_11_27_174117) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "admin_id"
-    t.bigint "genre_id"
     t.index ["admin_id"], name: "index_campsites_on_admin_id"
-    t.index ["genre_id"], name: "index_campsites_on_genre_id"
   end
 
   create_table "genres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -73,5 +80,7 @@ ActiveRecord::Schema.define(version: 2020_11_27_174117) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "campsite_genres", "campsites"
+  add_foreign_key "campsite_genres", "genres"
   add_foreign_key "campsites", "admins"
 end

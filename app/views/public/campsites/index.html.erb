@@ -1,16 +1,27 @@
 <div class="cantainer">
 	<div class="row">
-		<div class="col-12">
-			<h3>ホーム画面（）</h3>
+		<div class="col-12 offset-1">
 			<h3>キャンプ場一覧</h3>
-			<%= @campsites.each do |campsite| %>
-			<%= campsite.name %>
-			<%= campsite.explanation %>
-			<%= campsite.postcode %>
-			<%= campsite.prefecture_code %>
-			<%= campsite.address_city %>
-			<%= campsite.address_street %>
-			<% end %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-3 border">
+
+		</div>
+		<div class="col-9">
+			<div class="col-md-4">
+				<% @campsites.each do |campsite| %>
+				<div class="card">
+					<%#= link_to post_path(post.id) do %>
+						<%#= attachment_image_tag(post, :post_image, :fill, 300, 300, format: "jpeg", fallback: "no_image.jpeg", size: "100x100", class:"img-fluid card-img-top") %>
+					<%# end %>
+					<div class="card-body">
+						<%= link_to campsite.name, public_campsite_path(campsite) %>
+						<%= campsite.explanation %>
+					</div>
+				</div>
+				<% end %>
+			</div>
 		</div>
 	</div>
 </div>
