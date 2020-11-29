@@ -7,6 +7,9 @@ class Campsite < ApplicationRecord
 	accepts_attachments_for :campsite_images, attachment: :image
 
 
+	enum	approval_status: [:未承認, :承認]
+
+
 	def favorited_by?(user)
   		favorites.where(user_id: user.id).exists?
 	end

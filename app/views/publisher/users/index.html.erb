@@ -1,0 +1,23 @@
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-10">
+			<table>
+				<h3>会員一覧</h3>
+				<thead>
+					<tr>
+						<th>会員名</th>
+						<th>メールアドレス</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @users.each do |user| %>
+					<tr>
+						<td><%= user.name %></td>
+						<td><%= user.email %></td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

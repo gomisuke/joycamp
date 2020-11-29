@@ -35,6 +35,10 @@ Rails.application.routes.draw do
 
   namespace :publisher do
     get 'publishers/management'
+    resources :users
+    resources :campsites
+    patch 'campsite/:id/approval' => 'campsites#approval', as:"campsite_approval"
+    patch 'campsite/:id/approval_revoked' => 'campsites#approval_revoked', as:"campsite_approval_revoked"
     resources :genres
 
   end

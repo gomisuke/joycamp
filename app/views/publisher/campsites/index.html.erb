@@ -1,0 +1,48 @@
+<div class="cantainer">
+	<div class="row justify-content-center mt-3">
+		<div class="col-5">
+			<table>
+				<h3>承認待ちキャンプ場一覧</h3>
+				<thead>
+					<tr>
+						<th></th>
+						<th>キャンプ場名</th>
+						<th>説明</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @campsite_unapproveds.each do |campsite| %>
+					<tr>
+						<td><%= attachment_image_tag(campsite.campsite_images[0], :image, :fill, 300, 300, format: "jpeg", fallback: "no-image-camera.png", size: "100x100") %></td>
+						<td><%= campsite.name %></td>
+						<td><%= link_to "詳細", publisher_campsite_path(campsite), class:"btn btn-success" %></td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-5">
+			<table>
+				<h3>承認済キャンプサイト一覧</h3>
+				<thead>
+					<tr>
+						<th></th>
+						<th>キャンプ場名</th>
+						<th>説明</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @campsite_approveds.each do |campsite| %>
+					<tr>
+						<td><%= attachment_image_tag(campsite.campsite_images[0], :image, :fill, 300, 300, format: "jpeg", fallback: "no-image-camera.png", size: "100x100") %></td>
+						<td><%= campsite.name %></td>
+						<td><%= link_to "詳細", publisher_campsite_path(campsite), class:"btn btn-success" %></td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

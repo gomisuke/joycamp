@@ -1,0 +1,2 @@
+module Publisher::CampsitesHelper
+end
