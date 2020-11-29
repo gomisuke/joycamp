@@ -6,6 +6,7 @@
 				<%= link_to "キャンプ場を登録する", new_admin_campsite_path, class:"btn btn-success" %>
 				<thead>
 					<tr>
+						<th></th>
 						<th class="w-30">キャンプ場名</th>
 						<th class="w-50">説明</th>
 						<th></th>
@@ -14,6 +15,7 @@
 				<tbody>
 					<% @campsites.each do |campsite| %>
 					<tr>
+						<td><%= attachment_image_tag(campsite.campsite_images[0], :image, :fill, 300, 300, format: "jpeg", fallback: "no-image-camera.png", size: "100x100") %></td>
 						<td><%= campsite.name %></td>
 						<td><%= campsite.explanation %></td>
 						<td><%= link_to "詳細", admin_campsite_path(campsite), class:"btn btn-success" %></td>

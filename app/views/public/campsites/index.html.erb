@@ -1,6 +1,6 @@
 <div class="cantainer">
 	<div class="row">
-		<div class="col-12 offset-1">
+		<div class="col-11 offset-1">
 			<h3>キャンプ場一覧</h3>
 		</div>
 	</div>
@@ -9,15 +9,17 @@
 
 		</div>
 		<div class="col-9">
-			<div class="col-md-4">
+			<div class="row">
 				<% @campsites.each do |campsite| %>
-				<div class="card">
-					<%#= link_to post_path(post.id) do %>
-						<%#= attachment_image_tag(post, :post_image, :fill, 300, 300, format: "jpeg", fallback: "no_image.jpeg", size: "100x100", class:"img-fluid card-img-top") %>
-					<%# end %>
-					<div class="card-body">
-						<%= link_to campsite.name, public_campsite_path(campsite) %>
-						<%= campsite.explanation %>
+				<div class="col-4">
+					<div class="card">
+						<%= link_to public_campsite_path(campsite.id) do %>
+							<%= attachment_image_tag(campsite.campsite_images[0], :image, :fill, 300, 300, format: "jpeg", fallback: "no-image-camera.png", size: "100x100", class:"img-fluid card-img-top") %>
+						<% end %>
+						<div class="card-body">
+							<%= link_to campsite.name, public_campsite_path(campsite) %>
+							<%= campsite.explanation %>
+						</div>
 					</div>
 				</div>
 				<% end %>
