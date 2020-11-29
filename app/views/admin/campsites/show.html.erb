@@ -1,9 +1,14 @@
-<div>
-	<h1>キャンプサイト詳細画面</h1>
-	<div>
-		<%= @campsite.name %>
-		<%= @campsite.explanation %>
-		<%= link_to "編集", edit_admin_campsite_path(@campsite), class:"btn btn-success" %>
-		<%= link_to "削除", admin_campsite_path(@campsite), method: :delete, class:"btn btn-danger" %>
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-10">
+				<%= @campsite.name %><br>
+				<%= @campsite.explanation %><br>
+				<% @campsite.genres.each do |genre| %>
+					<%= genre.name %>
+				<% end %>
+				<%= link_to "編集", edit_admin_campsite_path(@campsite), class:"btn btn-success" %>
+				<%= link_to "削除", admin_campsite_path(@campsite), method: :delete, class:"btn btn-danger" %>
+			</div>
+		</div>
 	</div>
 </div>

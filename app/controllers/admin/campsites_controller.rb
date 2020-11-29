@@ -6,6 +6,7 @@ class Admin::CampsitesController < ApplicationController
   end
 
   def create
+    #byebug
   	@campsite = Campsite.new(campsite_params)
   	if @campsite.save
   		flash[:success] = "登録しました"
@@ -46,7 +47,7 @@ class Admin::CampsitesController < ApplicationController
   private
 
   	def campsite_params
-  		params.require(:campsite).permit(:name, :explanation, :postcode, :prefecture_code, :address_city, :address_street)
+  		params.require(:campsite).permit(:name, :explanation, :postcode, :prefecture_code, :address_city, :address_street, { :genre_ids => [] } )
   	end
 
 end

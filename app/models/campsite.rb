@@ -1,6 +1,8 @@
 class Campsite < ApplicationRecord
 
 	has_many :favorites, dependent: :destroy
+	has_many :campsite_genres
+	has_many :genres, through: :campsite_genres
 
 
 	def favorited_by?(user)

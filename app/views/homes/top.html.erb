@@ -1,16 +1,21 @@
-<div class="container">
-	<div class="row">
-		<div class="col-12">
-			<h1>JoyCamp！</h1>
-			<p>ユーザーログイン</p>
-			<%= link_to "ログインはこちら", new_user_session_path, class:"btn btn-primary" %>
-			<%= link_to "新規登録はこちら", new_user_registration_path, class:"btn btn-success" %>
-			<p>管理者ログイン</p>
-			<%= link_to "ログインはこちら", new_admin_session_path, class:"btn btn-primary" %>
-			<%= link_to "新規登録はこちら", new_admin_registration_path, class:"btn btn-success" %>
-			<p>運営ログイン</p>
-			<%= link_to "ログインはこちら", new_publisher_session_path, class:"btn btn-primary" %>
-			<%= link_to "新規登録はこちら", new_publisher_registration_path, class:"btn btn-success" %>
+<div class="container-field top">
+	<div class="row justify-content-center">
+		<div class="col-8">
+			<div class="text-center top-btn">
+				<p>ユーザーログイン</p>
+				<%= link_to "ログイン", new_user_session_path, class:"btn btn-primary" %>
+				<%= link_to "新規登録", new_user_registration_path, class:"btn btn-success" %>
+			</div>
+			<div class="text-center">
+				<p>管理者ログイン</p>
+				<%= link_to "ログイン", new_admin_session_path, class:"btn btn-primary" %>
+				<%= link_to "新規登録", new_admin_registration_path, class:"btn btn-success" %>
+			</div>
+			<div class="text-center">
+				<p>運営ログイン</p>
+				<%= link_to "ログイン", new_publisher_session_path, class:"btn btn-primary" %>
+				<%= link_to "新規登録", new_publisher_registration_path, class:"btn btn-success" %>
+			</div>
 		</div>
 	</div>
 </div>

@@ -1,3 +1,13 @@
 // Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.top {
+	background-image: image-url('joycamp-top');
+	background-size: cover;
+	min-height: 100vh;
+}
+
+.top-btn {
+	margin-top: 350px;
+}
