@@ -1,8 +1,10 @@
 class Campsite < ApplicationRecord
 
 	has_many :favorites, dependent: :destroy
-	has_many :campsite_genres
+	has_many :campsite_genres, dependent: :destroy
 	has_many :genres, through: :campsite_genres
+	has_many :campsite_images, dependent: :destroy
+	accepts_attachments_for :campsite_images, attachment: :image
 
 
 	def favorited_by?(user)

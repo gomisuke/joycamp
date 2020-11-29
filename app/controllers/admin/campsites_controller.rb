@@ -3,6 +3,7 @@ class Admin::CampsitesController < ApplicationController
 
   def new
   	@campsite = Campsite.new
+    @campsite.campsite_images.build
   end
 
   def create
@@ -47,7 +48,7 @@ class Admin::CampsitesController < ApplicationController
   private
 
   	def campsite_params
-  		params.require(:campsite).permit(:name, :explanation, :postcode, :prefecture_code, :address_city, :address_street, { :genre_ids => [] } )
+  		params.require(:campsite).permit(:name, :explanation, :postcode, :prefecture_code, :address_city, :address_street, { :genre_ids => [], :campsite_images_images => [] } )
   	end
 
 end

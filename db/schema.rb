@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_28_082006) do
+ActiveRecord::Schema.define(version: 2020_11_29_035037) do
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -32,6 +32,14 @@ ActiveRecord::Schema.define(version: 2020_11_28_082006) do
     t.datetime "updated_at", null: false
     t.index ["campsite_id"], name: "index_campsite_genres_on_campsite_id"
     t.index ["genre_id"], name: "index_campsite_genres_on_genre_id"
+  end
+
+  create_table "campsite_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "campsite_id"
+    t.string "image_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["campsite_id"], name: "index_campsite_images_on_campsite_id"
   end
 
   create_table "campsites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -91,6 +99,7 @@ ActiveRecord::Schema.define(version: 2020_11_28_082006) do
 
   add_foreign_key "campsite_genres", "campsites"
   add_foreign_key "campsite_genres", "genres"
+  add_foreign_key "campsite_images", "campsites"
   add_foreign_key "campsites", "admins"
   add_foreign_key "favorites", "campsites"
   add_foreign_key "favorites", "users"

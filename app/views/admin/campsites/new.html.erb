@@ -36,6 +36,15 @@
 			  <%= f.label :address_street %>
 			  <%= f.text_field :address_street, autofocus: true, class:"form-control", id:"campsite_address_street" %>
 			</div>
+			<div class="form-group">
+			  <label>画像1</label>
+			  <%= f.attachment_field :campsite_images_images, multiple: true, class:"" %>
+			</div>
+			<div class="form-group">
+			  <label>画像2</label>
+			  <%= f.attachment_field :campsite_images_images, multiple: true, class:"" %>
+			</div>
+
 			<%= f.submit "登録する", class:"btn btn-success" %>
 			<% end %>
 		</div>

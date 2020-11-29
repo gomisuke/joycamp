@@ -73,3 +73,6 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 #住所自動入力
 gem 'jp_prefecture'
+#画像投稿機能
+gem 'refile', require: 'refile/rails', github: 'manfe/refile'
+gem 'refile-mini_magick'

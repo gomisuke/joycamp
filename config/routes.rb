@@ -30,10 +30,13 @@ Rails.application.routes.draw do
     resources :campsites do
       resources :favorites, only: [:create, :destroy]
     end
+    get 'users/mypage'
   end
 
   namespace :publisher do
+    get 'publishers/management'
     resources :genres
+
   end
 
 
