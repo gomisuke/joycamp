@@ -1,0 +1,21 @@
+<div class="cantainer">
+	<div class="row justify-content-center">
+		<div class="col-10">
+			<table>
+				<h3>キャンプサイト一覧</h3>
+				<thead>
+					<tr>
+						<th>ジャンル名</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @genres.each do |genre| %>
+					<tr>
+						<td><%= genre.name %></td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

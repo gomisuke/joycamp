@@ -19,7 +19,6 @@ Rails.application.routes.draw do
   root 'homes#top'
   get 'homes/top'
   get 'homes/about'
-  resources :genres
 
   namespace :admin do
     get 'homes/top'
@@ -31,6 +30,10 @@ Rails.application.routes.draw do
     resources :campsites do
       resources :favorites, only: [:create, :destroy]
     end
+  end
+
+  namespace :publisher do
+    resources :genres
   end
 
 

@@ -1,0 +1,2 @@
+module Publisher::GenresHelper
+end
