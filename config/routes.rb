@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     get 'homes/about'
     resources :campsites do
       resources :favorites, only: [:create, :destroy]
+      resources :campsite_comments, only: [:create, :destroy]
     end
     get 'users/mypage'
   end

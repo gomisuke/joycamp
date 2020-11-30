@@ -6,6 +6,8 @@ class Public::CampsitesController < ApplicationController
 
   def show
   	@campsite = Campsite.find(params[:id])
+  	@campsite_comment = CampsiteComment.new
+  	@campsite_comments = CampsiteComment.where(campsite_id: @campsite.id)
   end
 
   

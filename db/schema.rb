@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_29_035037) do
+ActiveRecord::Schema.define(version: 2020_11_30_135400) do
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(version: 2020_11_29_035037) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "campsite_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "campsite_id"
+    t.bigint "user_id"
+    t.string "comment", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["campsite_id"], name: "index_campsite_comments_on_campsite_id"
+    t.index ["user_id"], name: "index_campsite_comments_on_user_id"
   end
 
   create_table "campsite_genres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -97,6 +107,8 @@ ActiveRecord::Schema.define(version: 2020_11_29_035037) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "campsite_comments", "campsites"
+  add_foreign_key "campsite_comments", "users"
   add_foreign_key "campsite_genres", "campsites"
   add_foreign_key "campsite_genres", "genres"
   add_foreign_key "campsite_images", "campsites"
