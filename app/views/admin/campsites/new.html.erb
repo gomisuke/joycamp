@@ -24,7 +24,7 @@
 			</div>
 			<div class="form-group">
 			  <%= f.label :prefecture_code %>
-			  <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :name, :name , autofocus: true, class:"form-control", id:"campsite_prefecture_code" %>
+			  <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name , autofocus: true, class:"form-control", id:"campsite_prefecture_code" %>
 			</div>
 
 			<div class="form-group">

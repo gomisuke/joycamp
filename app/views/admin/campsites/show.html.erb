@@ -3,6 +3,7 @@
 		<div class="col-10">
 				<%= @campsite.name %><br>
 				<%= @campsite.explanation %><br>
+				<%= @campsite.prefecture.name %><br>
 				<% @campsite.genres.each do |genre| %>
 					<%= genre.name %>
 				<% end %>

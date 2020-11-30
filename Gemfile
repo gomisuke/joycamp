@@ -71,6 +71,8 @@ gem 'devise'
 #レイアウト
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
+#アイコン
+gem 'font-awesome-sass', '~> 5.4.1'
 #住所自動入力
 gem 'jp_prefecture'
 #画像投稿機能
