@@ -5,20 +5,39 @@
 		</div>
 	</div>
 	<div class="row">
+		<div class="col-12 border">
+		</div>
+	</div>
+	<div class="row">
 		<div class="col-3 border">
 
 		</div>
 		<div class="col-9">
 			<div class="row">
 				<% @campsites.each do |campsite| %>
-				<div class="col-4">
-					<div class="border">
+				<div class="col-12 col-sm-6 col-lg-4">
+					<div class="card">
 						<%= link_to public_campsite_path(campsite.id) do %>
-							<%= attachment_image_tag(campsite.campsite_images[0], :image, :fill, 500, 500, format: "jpeg", fallback: "no-image-camera.png", size: "200x200", class:"") %>
+							<%= attachment_image_tag(campsite.campsite_images[0], :image, :fill, 300, 200, format: "jpeg", fallback: "no-image-camera.png", size: "200x200", class:"img-fluid card-img-top") %>
 						<% end %>
-						<div class="">
+						<div class="card-body">
 							<%= link_to campsite.name, public_campsite_path(campsite) %><br>
-							<%= campsite.prefecture.name %>
+							<%= campsite.prefecture.name %><br>
+							<% campsite.genres.each do |genre| %>
+								<span class="badge badge-secondary"><%= genre.name %></span>
+							<% end %><br>
+							<span id = "star-rate-<%= campsite.id %>"></span><span>   (<%= campsite.campsite_comments.count %>)</span>
+							<script>
+							  $('#star-rate-<%= campsite.id %>').raty({
+							    size: 36,
+							    starOff:  '<%= asset_path('star-off.png') %>',
+							    starOn : '<%= asset_path('star-on.png') %>',
+							    starHalf: '<%= asset_path('star-half.png') %>',
+							    half: true,
+							    readOnly: true,
+							    score: <%= campsite.review_average %>,
+							  })
+							</script>
 						</div>
 					</div>
 				</div>

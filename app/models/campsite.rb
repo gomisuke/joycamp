@@ -27,5 +27,13 @@ class Campsite < ApplicationRecord
 	  self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
 	end
 
+	def review_average
+		if self.campsite_comments.count > 0
+			@average = self.campsite_comments.sum(:rate) / self.campsite_comments.count.to_f
+		else
+			0
+		end
+	end
+
 
 end

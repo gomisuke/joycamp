@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2020_11_30_135400) do
     t.bigint "campsite_id"
     t.bigint "user_id"
     t.string "comment", null: false
+    t.float "rate", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["campsite_id"], name: "index_campsite_comments_on_campsite_id"

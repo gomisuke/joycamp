@@ -23,10 +23,38 @@
 					<% end %>
 					<% @campsite_comments.each do |comment| %>
 						<%= comment.comment %>
+						<div id = "star-rate-<%= comment.id %>"></div>
+						<script>
+						  $('#star-rate-<%= comment.id %>').raty({
+						    size: 36,
+						    starOff:  '<%= asset_path('star-off.png') %>',
+						    starOn : '<%= asset_path('star-on.png') %>',
+						    starHalf: '<%= asset_path('star-half.png') %>',
+						    half: true,
+						    readOnly: true,
+						    score: <%= comment.rate %>,
+						  })
+						</script>
 					<% end %>
 					<%= form_with model: [:public, @campsite, @campsite_comment] do |f| %>
+					<div class="form-group">
 						<%= f.label :comment %>
 						<%= f.text_field :comment, class:"form-control" %>
+					</div>
+						<div class="form-group row" id="star">
+							<%= f.label :rate,'評価 ', class:'col-md-3 col-form-label' %>
+						    <%= f.hidden_field :rate, id: :review_star %>
+						</div>
+						<script>
+						  $('#star').raty({
+						    size     : 36,
+						    starOff:  '<%= asset_path('star-off.png') %>',
+						    starOn : '<%= asset_path('star-on.png') %>',
+						    starHalf: '<%= asset_path('star-half.png') %>',
+						    scoreName: 'campsite_comment[rate]',
+						    half: true,
+						  });
+						</script>  
 						<%= f.submit "コメントする", class:"btn btn-success" %>
 					<% end %>
 				</div>
