@@ -75,6 +75,10 @@ gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.4.1'
 #住所自動入力
 gem 'jp_prefecture'
+#マップ
+gem "geocoder"
 #画像投稿機能
 gem 'refile', require: 'refile/rails', github: 'manfe/refile'
 gem 'refile-mini_magick'
+#機密情報
+gem 'dotenv-rails'

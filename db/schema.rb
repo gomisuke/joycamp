@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_30_135400) do
+ActiveRecord::Schema.define(version: 2020_12_02_141838) do
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -65,6 +65,8 @@ ActiveRecord::Schema.define(version: 2020_11_30_135400) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "admin_id"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["admin_id"], name: "index_campsites_on_admin_id"
   end
 

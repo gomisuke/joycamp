@@ -9,6 +9,7 @@ class Admin::CampsitesController < ApplicationController
   def create
     #byebug
   	@campsite = Campsite.new(campsite_params)
+    @campsite.admin = current_admin
   	if @campsite.save
   		flash[:success] = "登録しました"
   		redirect_to admin_campsites_path
@@ -48,7 +49,7 @@ class Admin::CampsitesController < ApplicationController
   private
 
   	def campsite_params
-  		params.require(:campsite).permit(:name, :explanation, :postcode, :prefecture_code, :address_city, :address_street, { :genre_ids => [], :campsite_images_images => [] } )
+  		params.require(:campsite).permit(:name, :explanation, :postcode, :prefecture_code, :address_city, :address_street, :latitude, :longitude, { :genre_ids => [], :campsite_images_images => [] } )
   	end
 
 end
