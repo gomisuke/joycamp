@@ -14,6 +14,6 @@ class Public::CampsiteCommentsController < ApplicationController
 	private
 
 		def campsite_comment_params
-			params.require(:campsite_comment).permit(:comment, :rate)
+			params.require(:campsite_comment).permit(:title, :comment, :rate)
 		end
 end

@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2020_11_30_135400) do
   create_table "campsite_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "campsite_id"
     t.bigint "user_id"
+    t.string "title", null: false
     t.string "comment", null: false
     t.float "rate", null: false
     t.datetime "created_at", null: false
