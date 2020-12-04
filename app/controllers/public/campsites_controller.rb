@@ -10,5 +10,9 @@ class Public::CampsitesController < ApplicationController
   	@campsite_comments = CampsiteComment.where(campsite_id: @campsite.id)
   end
 
-  
+  def search
+  	@campsites = Campsite.search(params[:search_params])
+  	render 'index'
+  end
+
 end
