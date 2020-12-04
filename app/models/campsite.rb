@@ -48,5 +48,18 @@ class Campsite < ApplicationRecord
 		"%s %s"%([self.prefecture.name,self.address_city,self.address_street])
 	end
 
+	#検索機能
+	def self.search(search_params)
+		if search_params.present?
+			@campsites = []
+			search_params.each do |search|
+				@campsites += Campsite.where(['prefecture_code LIKE ?', "%#{search}%"])
+				return @campsites
+			end
+		else
+			@campsites = Campsite.all
+		end
+	end
+
 
 end

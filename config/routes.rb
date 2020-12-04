@@ -32,6 +32,7 @@ Rails.application.routes.draw do
       resources :campsite_comments, only: [:create, :destroy]
     end
     get 'users/mypage'
+    get 'campsite/search' => 'campsites#search'
   end
 
   namespace :publisher do
