@@ -6,52 +6,63 @@
 	</div>
 	<div class="row">
 		<div class="col-12 border">
-			<h5>絞り込み</h5>
-			<%= form_with(url: public_campsite_search_path, method: :get, local: true) do |f| %>
-				<div>
-					<span>○北海道・東北</span><br>
-					<% JpPrefecture::Prefecture.all[0..6].each do |prefecture| %>
-						<%= f.check_box :search_params, {multiple: true, include_hidden: false}, "#{prefecture.code}",nil %>
-						<%= f.label :"#{prefecture.name}" %>
+			<div class="row">
+				<div class="col-8">
+					<h5>エリア</h5>
+					<%= form_with(url: public_campsite_search_path, method: :get, local: true) do |f| %>
+						<div>
+							<span>○北海道・東北</span><br>
+							<% JpPrefecture::Prefecture.all[0..6].each do |prefecture| %>
+								<%= f.check_box :search_params, {multiple: true, include_hidden: false}, "#{prefecture.code}",nil %>
+								<%= f.label :"#{prefecture.name}" %>
+							<% end %>
+						</div>
+						<div>
+							<span>○関東</span><br>
+							<% JpPrefecture::Prefecture.all[7..13].each do |prefecture| %>
+								<%= f.check_box :search_params, {multiple: true, include_hidden: false}, "#{prefecture.code}",nil %>
+								<%= f.label :"#{prefecture.name}" %>
+							<% end %>
+						</div>
+						<div>
+							<span>○北陸・東海</span><br>
+							<% JpPrefecture::Prefecture.all[14..22].each do |prefecture| %>
+								<%= f.check_box :search_params, {multiple: true, include_hidden: false}, "#{prefecture.code}",nil %>
+								<%= f.label :"#{prefecture.name}" %>
+							<% end %>
+						</div>
+							<div>
+							<span>○近畿</span><br>
+							<% JpPrefecture::Prefecture.all[23..29].each do |prefecture| %>
+								<%= f.check_box :search_params, {multiple: true, include_hidden: false}, "#{prefecture.code}",nil %>
+								<%= f.label :"#{prefecture.name}" %>
+							<% end %>
+						</div>
+						<div>
+							<span>○中国・四国</span><br>
+							<% JpPrefecture::Prefecture.all[30..38].each do |prefecture| %>
+								<%= f.check_box :search_params, {multiple: true, include_hidden: false}, "#{prefecture.code}",nil %>
+								<%= f.label :"#{prefecture.name}" %>
+							<% end %>
+						</div>
+						<div>
+							<span>○九州・沖縄</span><br>
+							<% JpPrefecture::Prefecture.all[39..46].each do |prefecture| %>
+								<%= f.check_box :search_params, {multiple: true, include_hidden: false}, "#{prefecture.code}",nil %>
+								<%= f.label :"#{prefecture.name}" %>
+							<% end %>
+						</div>
+					</div>
+					<div class="col-4">
+						<h5>ジャンル</h5>
+						<% @genres.each do |genre| %>
+							<%= f.check_box :genre_search_params, {multiple: true, include_hidden: false}, "#{genre.id}",nil %>
+							<%= f.label :"#{genre.name}" %>
+						<% end %>
+						<%= f.submit "絞り込み", class:"btn btn-success" %>
 					<% end %>
 				</div>
-				<div>
-					<span>○関東</span><br>
-					<% JpPrefecture::Prefecture.all[7..13].each do |prefecture| %>
-						<%= f.check_box :search_params, {multiple: true, include_hidden: false}, "#{prefecture.code}",nil %>
-						<%= f.label :"#{prefecture.name}" %>
-					<% end %>
-				</div>
-				<div>
-					<span>○北陸・東海</span><br>
-					<% JpPrefecture::Prefecture.all[14..22].each do |prefecture| %>
-						<%= f.check_box :search_params, {multiple: true, include_hidden: false}, "#{prefecture.code}",nil %>
-						<%= f.label :"#{prefecture.name}" %>
-					<% end %>
-				</div>
-					<div>
-					<span>○近畿</span><br>
-					<% JpPrefecture::Prefecture.all[23..29].each do |prefecture| %>
-						<%= f.check_box :search_params, {multiple: true, include_hidden: false}, "#{prefecture.code}",nil %>
-						<%= f.label :"#{prefecture.name}" %>
-					<% end %>
-				</div>
-				<div>
-					<span>○中国・四国</span><br>
-					<% JpPrefecture::Prefecture.all[30..38].each do |prefecture| %>
-						<%= f.check_box :search_params, {multiple: true, include_hidden: false}, "#{prefecture.code}",nil %>
-						<%= f.label :"#{prefecture.name}" %>
-					<% end %>
-				</div>
-				<div>
-					<span>○九州・沖縄</span><br>
-					<% JpPrefecture::Prefecture.all[39..46].each do |prefecture| %>
-						<%= f.check_box :search_params, {multiple: true, include_hidden: false}, "#{prefecture.code}",nil %>
-						<%= f.label :"#{prefecture.name}" %>
-					<% end %>
-				</div>
-				<%= f.submit "絞り込み", class:"btn btn-success" %>
-			<% end %>
+			</div>
 		</div>
 	</div>
 	<div class="row">

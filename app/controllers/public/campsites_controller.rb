@@ -2,6 +2,7 @@ class Public::CampsitesController < ApplicationController
 
   def index
   	@campsites = Campsite.all
+    @genres = Genre.all
   end
 
   def show
@@ -11,7 +12,8 @@ class Public::CampsitesController < ApplicationController
   end
 
   def search
-  	@campsites = Campsite.search(params[:search_params])
+  	@campsites = Campsite.search(params[:search_params], params[:genre_search_params])
+    @genres = Genre.all
   	render 'index'
   end
 

@@ -49,15 +49,32 @@ class Campsite < ApplicationRecord
 	end
 
 	#検索機能
-	def self.search(search_params)
+	def self.search(search_params, genres_params)
+		@campsites = []
 		if search_params.present?
-			@campsites = []
 			search_params.each do |search|
-				@campsites += Campsite.where(['prefecture_code LIKE ?', "%#{search}%"])
-				return @campsites
+				#@campsites += Campsite.where(['prefecture_code LIKE ?', "%#{search}%"])
+				if genres_params.present?
+					genres_params.each do |genre|
+						@genre = Genre.find(genre.to_i)
+						@campsites += @genre.campsites.where(['prefecture_code LIKE ?', "%#{search}%"])
+						return @campsites
+					end
+				else
+					@campsites += Campsite.where(['prefecture_code LIKE ?', "%#{search}%"])
+					return @campsites
+				end
 			end
 		else
-			@campsites = Campsite.all
+			if genres_params.present?
+				genres_params.each do |genre|
+					@genre = Genre.find(genre.to_i)
+					@campsites += @genre.campsites
+					return @campsites
+				end
+			else
+				@campsites = Campsite.all
+			end
 		end
 	end
 
