@@ -8,6 +8,13 @@ class Public::CampsiteCommentsController < ApplicationController
 		redirect_to public_campsites_path
 	end
 
+	def destroy
+		@campsite_comment = CampsiteComment.find(params[:id])
+		@campsite = Campsite.find(params[:campsite_id])
+		@campsite_comment.destroy
+		redirect_to public_campsite_path(@campsite)
+	end
+
 
 
 

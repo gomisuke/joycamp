@@ -57,6 +57,9 @@
 							    score: <%= comment.rate %>,
 							  })
 							</script>
+							<% if comment.user == current_user %>
+							<%= link_to "削除", public_campsite_campsite_comment_path(@campsite.id, comment.id), method: :delete %>
+							<% end %>
 						<% end %>
 					</div>
 				</div>
