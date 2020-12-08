@@ -1,4 +1,7 @@
 class Publisher::CampsitesController < ApplicationController
+
+
+
   def index
   	@campsite_unapproveds = Campsite.where(approval_status: 0)
   	@campsite_approveds = Campsite.where(approval_status: 1)
