@@ -1,6 +1,18 @@
 <div class="container">
 	<div class="row justify-content-center">
-		<div class="col-8 mt-3">
+		<div class="col-10 mt-3">
+			<h3>
+				<%= @campsite.name %>
+				<% if @campsite.favorited_by?(current_user) %>
+					<%= link_to public_campsite_favorite_path(@campsite, current_user), method: :delete do %>
+						<i class="fas fa-heart"></i>
+					<% end %>
+				<% else %>
+					<%= link_to public_campsite_favorites_path(@campsite), method: :post do %>
+						<i class="far fa-heart", id="like-off"></i>
+					<% end %>
+				<% end %>
+			</h3>
 			<div class="carousel slide " id="c1" data-ride="carousel">
 				<ol class="carousel-indicators">
 					<li data-target="#c1" data-slide-to="0" class="active"></li>
@@ -51,24 +63,21 @@
 					<span class="sr-only">次の画像へ</span>
 				</a>
 			</div>
+		</div>
+	</div>
+	<div class="row justify-content-center">
+		<div class="col-10">
 			<div class="">
-				<%= @campsite.name %><br>
-				<%= @campsite.explanation %><br>
-				<%= @campsite.postcode %><br>
-				<%= @campsite.prefecture.name %>
-				<%= @campsite.address_city %>
-				<%= @campsite.address_street %>
-				<% if @campsite.favorited_by?(current_user) %>
-					<%= link_to public_campsite_favorite_path(@campsite, current_user), method: :delete do %>
-						<i class="fas fa-heart"></i>
-						いいねを外す
-					<% end %>
-				<% else %>
-					<%= link_to public_campsite_favorites_path(@campsite), method: :post do %>
-						<i class="far fa-heart", id="like-off"></i>
-						いいね
-					<% end %>
-				<% end %>
+				<p><%= @campsite.explanation %></p>
+				<table class="table">
+					<tr>
+						<th>郵便番号</th>
+						<td><%= @campsite.postcode %></td>
+					</tr>
+					<tr>
+						<th>住所</th>
+						<td><%= @campsite.prefecture.name %><%= @campsite.address_city %><%= @campsite.address_street %></td>
+				</table>
 				<div id="map">
 				<script>
 					function initMap(){
