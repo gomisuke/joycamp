@@ -3,15 +3,9 @@
 		<div class="col-10 mt-3">
 			<h3>
 				<%= @campsite.name %>
-				<% if @campsite.favorited_by?(current_user) %>
-					<%= link_to public_campsite_favorite_path(@campsite, current_user), method: :delete do %>
-						<i class="fas fa-heart"></i>
-					<% end %>
-				<% else %>
-					<%= link_to public_campsite_favorites_path(@campsite), method: :post do %>
-						<i class="far fa-heart", id="like-off"></i>
-					<% end %>
-				<% end %>
+				<div id="favorite">
+					<%= render 'public/favorites/favorite', { campsite: @campsite } %>
+				</div>
 			</h3>
 			<div class="carousel slide " id="c1" data-ride="carousel">
 				<ol class="carousel-indicators">
