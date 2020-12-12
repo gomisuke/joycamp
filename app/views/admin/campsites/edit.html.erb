@@ -1,14 +1,64 @@
-<div>
-	<h1>キャンプサイトを登録する</h1>
-	<%= form_with model: [:admin, @campsite] do |f| %>
-	<div class="form-group">
-		<%= f.label :name %>
-		<%= f.text_field :name %>
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-8">
+			<h1>キャンプサイトを編集する</h1>
+			<%= form_with model: [:admin, @campsite] do |f| %>
+
+			<div class="form-group">
+				<%= f.label :name %>
+				<%= f.text_field :name, class:"form-control" %>
+			</div>
+			<div class="form-group">
+				<%= f.label :explanation %>
+				<%= f.text_field :explanation, class:"form-control" %>
+			</div>
+			<div class="form-group">
+				<%#= f.label :genre_id %>
+				<%= f.collection_check_boxes(:genre_ids, Genre.all, :id, :name) do |b| %>
+					<%= b.label { b.check_box + b.text } %>
+				<% end %>
+			</div>
+			<div class="form-group">
+				<%= f.label :postcode %>
+				<%= f.text_field :postcode, autofocus: true, class:"form-control", id:"campsite_postal_code" %>
+			</div>
+			<div class="form-group">
+			  <%= f.label :prefecture_code %>
+			  <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name , autofocus: true, class:"form-control", id:"campsite_prefecture_code" %>
+			</div>
+
+			<div class="form-group">
+			  <%= f.label :address_city %>
+			  <%= f.text_field :address_city, autofocus: true, class:"form-control", id:"campsite_address_city" %>
+			</div>
+
+			<div class="form-group">
+			  <%= f.label :address_street %>
+			  <%= f.text_field :address_street, autofocus: true, class:"form-control", id:"campsite_address_street" %>
+			</div>
+			<div class="form-group">
+			  <label>画像1</label>
+			  <%= f.attachment_field :campsite_images_images, multiple: true, class:"" %>
+			</div>
+			<div class="form-group">
+			  <label>画像2</label>
+			  <%= f.attachment_field :campsite_images_images, multiple: true, class:"" %>
+			</div>
+			<div class="form-group">
+			  <label>画像3</label>
+			  <%= f.attachment_field :campsite_images_images, multiple: true, class:"" %>
+			</div>
+			<div class="form-group">
+			  <label>画像4</label>
+			  <%= f.attachment_field :campsite_images_images, multiple: true, class:"" %>
+			</div>
+			<div class="form-group">
+			  <label>画像5</label>
+			  <%= f.attachment_field :campsite_images_images, multiple: true, class:"" %>
+			</div>
+
+			<%= f.submit "登録する", class:"btn btn-success" %>
+			<% end %>
+		</div>
 	</div>
-	<div>
-		<%= f.label :explanation %>
-		<%= f.text_field :explanation %>
-	</div>
-	<%= f.submit "更新する", class:"btn btn-success" %>
-	<% end %>
 </div>
