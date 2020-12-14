@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get 'homes/top'
+    get 'admins/mypage'
     resources :campsites
   end
 
