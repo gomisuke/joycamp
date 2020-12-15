@@ -15,9 +15,7 @@ class Campsite < ApplicationRecord
 	#地図(google_map_api)
 	geocoded_by :address
   	after_validation :geocode
-
-  	#attr_accessor :address
-
+  
 	enum	approval_status: [:未承認, :承認]
 
 	#いいね済検証

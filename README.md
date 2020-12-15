@@ -1,24 +1,11 @@
-# README
+# JoyCampについて
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
 
-Things you may want to cover:
+###ユーザー
+キャンプ場を検索できるサイトです。
+気になるキャンプ場をお気に入りすることもできます。
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+###キャンプ場管理者
+自分の管理しているキャンプ場を登録できます。
+登録にはサイト管理者の承認が必要となります。
