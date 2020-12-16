@@ -1,0 +1,13 @@
+<div class="cantainer">
+	<div class="row justify-content-center">
+		<div class="col-6">
+			<%= form_with model: @post, url: public_campsite_posts_path(@campsite) do |f| %>
+			<div class="">
+				<%= f.label :post_image %>
+				<%= f.attachment_field :post_image, class:"" %>
+			</div>
+			<%= f.submit "投稿", class:"btn btn-success" %>
+			<% end %>
+		</div>
+	</div>
+</div>

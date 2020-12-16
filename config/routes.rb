@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     resources :campsites do
       resources :favorites, only: [:create, :destroy]
       resources :campsite_comments, only: [:create, :destroy]
+      resources :posts
     end
     get 'users/mypage'
     get 'campsite/search' => 'campsites#search'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_02_141838) do
+ActiveRecord::Schema.define(version: 2020_12_16_082533) do
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -86,6 +86,16 @@ ActiveRecord::Schema.define(version: 2020_12_02_141838) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "campsite_id"
+    t.string "post_image_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["campsite_id"], name: "index_posts_on_campsite_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
   create_table "publishers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -119,4 +129,6 @@ ActiveRecord::Schema.define(version: 2020_12_02_141838) do
   add_foreign_key "campsites", "admins"
   add_foreign_key "favorites", "campsites"
   add_foreign_key "favorites", "users"
+  add_foreign_key "posts", "campsites"
+  add_foreign_key "posts", "users"
 end

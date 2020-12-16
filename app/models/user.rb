@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_many :favorites, dependent: :destroy
   has_many :campsite_comments, dependent: :destroy
+  has_many :posts, dependent: :destroy
 end
