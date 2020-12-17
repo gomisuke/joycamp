@@ -56,8 +56,8 @@
 			</div>
 		</div>
 	</div>
-	<div class="row justify-content-center">
-		<div class="col-10">
+	<div class="row justify-content-center mt-3">
+		<div class="col-5">
 			<div class="">
 				<h4>概要</h4>
 				<p><%= @campsite.explanation %></p>
@@ -72,49 +72,58 @@
 						<td><%= @campsite.prefecture.name %><%= @campsite.address_city %><%= @campsite.address_street %></td>
 					</tr>
 				</table>
-				<div id="map">
-				<script>
-					function initMap(){
-						let pos = new google.maps.LatLng(
-						   '<%= @campsite.latitude %>',
-						   '<%= @campsite.longitude %>'
-						  );
-						let map = new google.maps.Map(document.getElementById('map'), {
-						zoom: 12,
-						center: pos
-						});
+			</div>
+		</div>
+		<div class="col-5">
+			<div id="map">
+			<script>
+				function initMap(){
+					let pos = new google.maps.LatLng(
+					   '<%= @campsite.latitude %>',
+					   '<%= @campsite.longitude %>'
+					  );
+					let map = new google.maps.Map(document.getElementById('map'), {
+					zoom: 12,
+					center: pos
+					});
 
-						marker = new google.maps.Marker({
-	     					position: pos,
-	   						map: map
-	   					});
-					}
-				</script>
-				<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
-				</div>
-				<div class="mt-3">
-					<p>○レビュー○</p>
-					<% @campsite_comments.each do |comment| %>
-						<%= comment.comment %>
-						<div id = "star-rate-<%= comment.id %>"></div>
-						<script>
-						  $('#star-rate-<%= comment.id %>').raty({
-						    size: 36,
-						    starOff:  '<%= asset_path('star-off.png') %>',
-						    starOn : '<%= asset_path('star-on.png') %>',
-						    starHalf: '<%= asset_path('star-half.png') %>',
-						    half: true,
-						    readOnly: true,
-						    score: <%= comment.rate %>,
-						  })
-						</script>
-						<% if comment.user == current_user %>
-						<%= link_to "削除", public_campsite_campsite_comment_path(@campsite.id, comment.id), method: :delete %>
-						<% end %>
+					marker = new google.maps.Marker({
+     					position: pos,
+   						map: map
+   					});
+				}
+			</script>
+			<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['API_KEY'] %>&callback=initMap" async defer></script>
+			</div>
+		</div>
+	</div>
+	<div class="row justify-content-center">
+		<div class="col-8">
+			<div class="my-3">
+				<h4>レビュー</h4>
+				<% @campsite_comments.each do |comment| %>
+				<div class="border p-3">
+					<h5><%= comment.title %></h5>
+					<%= comment.comment %>
+					<div id = "star-rate-<%= comment.id %>"></div>
+					<script>
+					  $('#star-rate-<%= comment.id %>').raty({
+					    size: 36,
+					    starOff:  '<%= asset_path('star-off.png') %>',
+					    starOn : '<%= asset_path('star-on.png') %>',
+					    starHalf: '<%= asset_path('star-half.png') %>',
+					    half: true,
+					    readOnly: true,
+					    score: <%= comment.rate %>,
+					  })
+					</script>
+					<% if comment.user == current_user %>
+					<%= link_to "削除", public_campsite_campsite_comment_path(@campsite.id, comment.id), method: :delete %>
 					<% end %>
 				</div>
+				<% end %>
 			</div>
-			<div class="border">
+			<div class="border p-3">
 				<%= form_with model: [:public, @campsite, @campsite_comment] do |f| %>
 					<div class="form-group">
 						<%= f.label :title %>
