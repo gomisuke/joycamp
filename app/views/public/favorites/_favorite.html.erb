@@ -1,3 +1,4 @@
+<%= @campsite.name %>
 <% if campsite.favorited_by?(current_user) %>
 	<%= link_to public_campsite_favorite_path(campsite, current_user), method: :delete, remote: true do %>
 		<i class="fas fa-heart"></i>

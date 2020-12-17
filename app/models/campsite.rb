@@ -1,6 +1,7 @@
 class Campsite < ApplicationRecord
 
 	belongs_to :admin
+	has_many :posts, dependent: :destroy
 	has_many :favorites, dependent: :destroy
 	has_many :campsite_genres, dependent: :destroy
 	has_many :genres, through: :campsite_genres
@@ -15,7 +16,7 @@ class Campsite < ApplicationRecord
 	#地図(google_map_api)
 	geocoded_by :address
   	after_validation :geocode
-  
+
 	enum	approval_status: [:未承認, :承認]
 
 	#いいね済検証
