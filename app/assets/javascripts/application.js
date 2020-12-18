@@ -35,3 +35,54 @@ $(function() {
   });
 });
 
+//キャンプサイト画像プレビュー機能
+$(function(){
+  $('#campsite-image1').on('change', function (e) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      $("#campsite-preview1").attr('src', e.target.result);
+    }
+    reader.readAsDataURL(e.target.files[0]);
+  });
+});
+
+$(function(){
+  $('#campsite-image2').on('change', function (e) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      $("#campsite-preview2").attr('src', e.target.result);
+    }
+    reader.readAsDataURL(e.target.files[0]);
+  });
+});
+
+$(function(){
+  $('#campsite-image3').on('change', function (e) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      $("#campsite-preview3").attr('src', e.target.result);
+    }
+    reader.readAsDataURL(e.target.files[0]);
+  });
+});
+
+$(function(){
+  $('#campsite-image4').on('change', function (e) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      $("#campsite-preview4").attr('src', e.target.result);
+    }
+    reader.readAsDataURL(e.target.files[0]);
+  });
+});
+
+$(function(){
+  $('#campsite-image5').on('change', function (e) {
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      $("#campsite-preview5").attr('src', e.target.result);
+    }
+    reader.readAsDataURL(e.target.files[0]);
+  });
+});
+

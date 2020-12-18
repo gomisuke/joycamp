@@ -7,7 +7,6 @@ class Admin::CampsitesController < ApplicationController
   end
 
   def create
-    #byebug
   	@campsite = Campsite.new(campsite_params)
     @campsite.admin = current_admin
   	if @campsite.save
