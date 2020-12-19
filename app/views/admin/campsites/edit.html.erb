@@ -38,23 +38,28 @@
 			</div>
 			<div class="form-group">
 			  <label>画像1</label>
-			  <%= f.attachment_field :campsite_images_images, multiple: true, class:"" %>
+			  <%= f.attachment_field :campsite_images_images, multiple: true, id:"campsite-image1" %>
+			  <%= attachment_image_tag(@campsite.campsite_images[0], :image, size:"300x300", format:"jpeg", fallback:"no-image-camera.png", id:"campsite-preview1", class:"") %>
 			</div>
 			<div class="form-group">
 			  <label>画像2</label>
-			  <%= f.attachment_field :campsite_images_images, multiple: true, class:"" %>
+			  <%= f.attachment_field :campsite_images_images, multiple: true, id:"campsite-image2" %>
+			  <%= attachment_image_tag(@campsite.campsite_images[1], :image, size:"300x300", format:"jpeg", fallback:"no-image-camera.png", id:"campsite-preview2", class:"") %>
 			</div>
 			<div class="form-group">
 			  <label>画像3</label>
-			  <%= f.attachment_field :campsite_images_images, multiple: true, class:"" %>
+			  <%= f.attachment_field :campsite_images_images, multiple: true, id:"campsite-image3" %>
+			  <%= attachment_image_tag(@campsite.campsite_images[2], :image, size:"300x300", format:"jpeg", fallback:"no-image-camera.png", id:"campsite-preview3", class:"") %>
 			</div>
 			<div class="form-group">
 			  <label>画像4</label>
-			  <%= f.attachment_field :campsite_images_images, multiple: true, class:"" %>
+			  <%= f.attachment_field :campsite_images_images, multiple: true, id:"campsite-image4" %>
+			  <%= attachment_image_tag(@campsite.campsite_images[3], :image, size:"300x300", format:"jpeg", fallback:"no-image-camera.png", id:"campsite-preview4", class:"") %>
 			</div>
 			<div class="form-group">
 			  <label>画像5</label>
-			  <%= f.attachment_field :campsite_images_images, multiple: true, class:"" %>
+			  <%= f.attachment_field :campsite_images_images, multiple: true, id:"campsite-image5" %>
+			  <%= attachment_image_tag(@campsite.campsite_images[4], :image, size:"300x300", format:"jpeg", fallback:"no-image-camera.png", id:"campsite-preview5", class:"") %>
 			</div>
 
 			<%= f.submit "登録する", class:"btn btn-success" %>
