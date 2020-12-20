@@ -4,7 +4,8 @@
 			<%= form_with model: @post, url: public_campsite_posts_path(@campsite) do |f| %>
 			<div class="">
 				<%= f.label :post_image %>
-				<%= f.attachment_field :post_image, class:"" %>
+				<%= f.attachment_field :post_image, id:"post-image" %>
+				<%= attachment_image_tag(@post, :post_image, size:"300x300", format:"jpeg", fallback:"no-image-camera.png", id:"post-preview", class:"") %>
 			</div>
 			<%= f.submit "投稿", class:"btn btn-success" %>
 			<% end %>
